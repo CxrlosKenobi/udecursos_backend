@@ -1,7 +1,7 @@
 from flask_cors import CORS, cross_origin
 from flask import Flask, jsonify
 #
-from endpoints.Mongo.index import get_career
+from endpoints.Mongo.index import career_data
 
 app = Flask(__name__)
 cors = CORS(app, resources={ r"/*": { "origins": "*" } })
@@ -16,8 +16,10 @@ def index():
 @app.route("/careers/<career_code>", methods=["GET"])
 @cross_origin()
 def get_career(career_code):
-  response = get_career(career_code)
+  response = career_data(career_code)
   return jsonify(response)
+
+
 
 
 if __name__ == "__main__":
