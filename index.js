@@ -7,13 +7,16 @@ const dbRouter = require("./routes/careers");
 const app = express();
 const PORT = process.env.PORT;
 
-const allowed = {
-  origin: ["http://localhost:3000", "https://test.udecursos.study"]
-};
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
 
-app.use(cors(allowed));
-app.use("/api", dbRouter);
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/api", dbRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Okey dokey" });
