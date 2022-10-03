@@ -12,8 +12,8 @@ router.get("/careers", async (req, res) => {
   res.json(career);
 });
 
-router.get("/careers/:code/tasks", async (req, res) => {
-  const { code } = req.params;
+router.get("/tasks", async (req, res) => {
+  const { code } = req.query;
   const tasks = await getCareerTasks(code);
 
   res.json(tasks);
