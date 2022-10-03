@@ -8,10 +8,10 @@ const app = express();
 const PORT = process.env.PORT;
 
 const allowed = {
-  origin: ["http://localhost:3000", "https://udecursos.study"],
+  origin: ["http://localhost:3000", "https://test.udecursos.study"]
 };
 
-app.options("*", cors(allowed));
+app.use(cors(allowed));
 app.use("/api", dbRouter);
 app.use(express.json());
 
