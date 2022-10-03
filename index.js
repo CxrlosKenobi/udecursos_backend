@@ -7,7 +7,7 @@ const dbRouter = require("./routes/careers");
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
+app.use(cors({ origin: true }));
 app.use("/api", dbRouter);
 app.use(express.json());
 
