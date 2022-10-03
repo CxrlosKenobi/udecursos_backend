@@ -4,6 +4,13 @@ const { getCareer, getCareerTasks } = require("../modules/MongoDB");
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
+
+
 router.get("/careers/:code", async (req, res) => {
   const { code } = req.params;
   const career = await getCareer(code);

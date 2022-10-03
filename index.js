@@ -7,13 +7,12 @@ const dbRouter = require("./routes/careers");
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors({
-  origin: ["http://localhost:3000", "https://test.udecursos.study"]
-}));
+app.use(cors());
+
 app.use("/api", dbRouter);
 app.use(express.json());
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Okey dokey" });
 });
 
