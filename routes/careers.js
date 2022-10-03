@@ -4,7 +4,6 @@ const { getCareer, getCareerTasks } = require("../modules/MongoDB");
 
 const router = express.Router();
 
-// i.e.: /careers?code=INF
 router.get("/careers", async (req, res) => {
   const { code } = req.query;
   const career = await getCareer(code);
