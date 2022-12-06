@@ -13,6 +13,7 @@ router.get("/careers", async (req, res) => {
     return;
   }
 
+  res.set("Access-Control-Allow-Origin", "*");
   res.status(200).json(career);
 });
 
@@ -24,8 +25,10 @@ router.get("/tasks", async (req, res) => {
     res.status(404).send("Tasks not found");
     return;
   }
-
+  
+  res.set("Access-Control-Allow-Origin", "*");
   res.status(200).json(tasks);
 });
 
 module.exports = router;
+
