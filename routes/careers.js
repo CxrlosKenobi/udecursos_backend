@@ -8,15 +8,24 @@ router.get("/careers", async (req, res) => {
   const { code } = req.query;
   const career = await getCareer(code);
 
-  res.json(career);
+  if (!career) {
+    res.status(404).send("Career not found");
+    return;
+  }
+
+  res.status(200).json(career);
 });
 
 router.get("/tasks", async (req, res) => {
   const { code } = req.query;
   const tasks = await getCareerTasks(code);
 
-  res.json(tasks);
-});
+  if (!tasks) {
+    res.status(404).send("Tasks not found");
+    return;
+  }
 
+  res.status(200).json(tasks);
+});
 
 module.exports = router;
